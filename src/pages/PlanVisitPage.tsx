@@ -44,9 +44,9 @@ export const PlanVisitPage = () => {
             animate={{ opacity: 1, y: 0 }}
             className="font-serif text-5xl font-bold mb-6"
           >
-            Plan Your Visit
+            Plan Your Visit to FTI-Biao
           </motion.h1>
-          <p className="text-xl text-blue-100 max-w-2xl mx-auto">We can't wait to welcome you to Faith Tabernacle. Here's everything you need to know for your first visit.</p>
+          <p className="text-xl text-blue-100 max-w-2xl mx-auto">We can't wait to welcome you to our church in Biao, Davao City. Here's everything you need to know for your first visit.</p>
         </div>
       </section>
 
@@ -95,18 +95,29 @@ export const PlanVisitPage = () => {
                   <MapPin className="text-yellow-500 shrink-0 mt-1" size={24} />
                   <div>
                     <h4 className="font-bold text-blue-900">Location</h4>
-                    <p className="text-gray-600">Biao, Community Center, City, State</p>
-                    <a href="#" className="text-blue-900 font-bold hover:underline mt-2 inline-block">Open in Google Maps</a>
+                    <p className="text-gray-600">Biao, Davao City, Philippines</p>
+                    <a 
+                      href="https://www.google.com/maps/search/?api=1&query=FTI-Biao+Church" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="text-blue-900 font-bold hover:underline mt-2 inline-block"
+                    >
+                      Open in Google Maps
+                    </a>
                   </div>
                 </div>
               </div>
             </div>
             <div className="bg-white p-4 rounded-3xl shadow-xl border border-gray-100 h-96 overflow-hidden">
-              {/* Placeholder for Map */}
-              <div className="w-full h-full bg-blue-50 flex flex-col items-center justify-center text-blue-300">
-                <MapPin size={48} className="mb-4" />
-                <p className="font-bold">Interactive Map Placeholder</p>
-              </div>
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.6230876825243!2d125.5201759757247!3d7.169494892835307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x32f91539cba2f09b%3A0x557d87e72e03edb9!2sFTI-Biao%20Church!5e0!3m2!1sen!2sph!4v1772590496046!5m2!1sen!2sph" 
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                allowFullScreen 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
             </div>
           </div>
         </div>

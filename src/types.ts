@@ -78,3 +78,47 @@ export interface SiteSettings {
   email: string;
   facebook_url: string;
 }
+
+export interface Enrollment {
+  id: string;
+  courseId: string;
+  courseTitle: string;
+  enrollmentDate: string;
+  status: 'active' | 'completed' | 'paused';
+}
+
+export interface CourseProgress {
+  id: string;
+  courseId: string;
+  totalLessons: number;
+  completedLessons: number;
+  progressPercent: number;
+  lastAccessedLesson: string;
+  updatedAt: string;
+}
+
+export interface LearningActivity {
+  id: string;
+  type: 'video' | 'quiz' | 'assignment';
+  courseId: string;
+  courseTitle?: string;
+  duration?: string;
+  score?: number;
+  createdAt: string;
+}
+
+export interface Certificate {
+  id: string;
+  courseId: string;
+  courseTitle: string;
+  issuedAt: string;
+  certificateUrl?: string;
+}
+
+export interface UserProfile {
+  uid: string;
+  displayName: string;
+  email: string;
+  role: string;
+  createdAt: string;
+}

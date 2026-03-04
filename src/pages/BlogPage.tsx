@@ -6,6 +6,12 @@ import { MOCK_POSTS } from '../mockData';
 import { formatDate, cn } from '../lib/utils';
 
 export const BlogPage = () => {
+  const [activeCategory, setActiveCategory] = React.useState('All Posts');
+
+  const filteredPosts = activeCategory === 'All Posts' 
+    ? MOCK_POSTS 
+    : MOCK_POSTS.filter(post => post.category === activeCategory);
+
   return (
     <div className="pt-20">
       {/* Hero */}
@@ -38,9 +44,10 @@ export const BlogPage = () => {
           {['All Posts', 'Devotionals', 'Church News', 'Announcements', 'Testimonies', 'Youth Corner', 'Missions'].map((cat) => (
             <button 
               key={cat}
+              onClick={() => setActiveCategory(cat)}
               className={cn(
                 "px-6 py-2 rounded-full text-sm font-bold transition-all",
-                cat === 'All Posts' ? "bg-blue-900 text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                activeCategory === cat ? "bg-blue-900 text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
               )}
             >
               {cat}
@@ -50,41 +57,43 @@ export const BlogPage = () => {
       </section>
 
       {/* Featured Post */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link to={`/blog/${MOCK_POSTS[0].slug}`} className="group block">
-            <div className="bg-gray-900 rounded-[3rem] overflow-hidden relative aspect-[21/9] flex items-center">
-              <img 
-                src={MOCK_POSTS[0].featured_image} 
-                alt={MOCK_POSTS[0].title} 
-                className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700"
-                referrerPolicy="no-referrer"
-              />
-              <div className="relative z-10 p-12 md:p-24 max-w-3xl text-white">
-                <span className="inline-block px-4 py-1 bg-yellow-500 text-blue-950 text-xs font-bold rounded-full uppercase tracking-widest mb-6">Featured Article</span>
-                <h2 className="font-serif text-4xl md:text-6xl font-bold mb-6 leading-tight group-hover:text-yellow-500 transition-colors">{MOCK_POSTS[0].title}</h2>
-                <p className="text-xl text-blue-100 opacity-90 mb-8 line-clamp-2">{MOCK_POSTS[0].excerpt}</p>
-                <div className="flex items-center gap-6 text-sm font-medium">
-                  <div className="flex items-center gap-2">
-                    <User size={16} className="text-yellow-500" />
-                    <span>{MOCK_POSTS[0].author}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Calendar size={16} className="text-yellow-500" />
-                    <span>{formatDate(MOCK_POSTS[0].created_at)}</span>
+      {activeCategory === 'All Posts' && filteredPosts.length > 0 && (
+        <section className="py-16 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <Link to={`/blog/${filteredPosts[0].slug}`} className="group block">
+              <div className="bg-gray-900 rounded-[3rem] overflow-hidden relative aspect-[21/9] flex items-center">
+                <img 
+                  src={filteredPosts[0].featured_image} 
+                  alt={filteredPosts[0].title} 
+                  className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="relative z-10 p-12 md:p-24 max-w-3xl text-white">
+                  <span className="inline-block px-4 py-1 bg-yellow-500 text-blue-950 text-xs font-bold rounded-full uppercase tracking-widest mb-6">Featured Article</span>
+                  <h2 className="font-serif text-4xl md:text-6xl font-bold mb-6 leading-tight group-hover:text-yellow-500 transition-colors">{filteredPosts[0].title}</h2>
+                  <p className="text-xl text-blue-100 opacity-90 mb-8 line-clamp-2">{filteredPosts[0].excerpt}</p>
+                  <div className="flex items-center gap-6 text-sm font-medium">
+                    <div className="flex items-center gap-2">
+                      <User size={16} className="text-yellow-500" />
+                      <span>{filteredPosts[0].author}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Calendar size={16} className="text-yellow-500" />
+                      <span>{formatDate(filteredPosts[0].created_at)}</span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </Link>
-        </div>
-      </section>
+            </Link>
+          </div>
+        </section>
+      )}
 
       {/* Blog Grid */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-            {MOCK_POSTS.map((post) => (
+            {(activeCategory === 'All Posts' ? filteredPosts.slice(1) : filteredPosts).map((post) => (
               <motion.article 
                 key={post.id}
                 whileHover={{ y: -10 }}

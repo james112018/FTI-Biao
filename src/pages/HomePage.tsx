@@ -63,7 +63,7 @@ export const HomePage = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-lg md:text-xl mb-10 text-blue-50 max-w-3xl mx-auto leading-relaxed"
           >
-            Join a community rooted in love, Christ-centered worship, and the transforming power of God's Word. Everyone is welcome at Faith Tabernacle.
+            Join our vibrant community in Biao, Davao City. Rooted in love, Christ-centered worship, and the transforming power of God's Word, everyone is welcome at FTI-Biao Church.
           </motion.p>
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
@@ -103,11 +103,11 @@ export const HomePage = () => {
               className="space-y-8"
             >
               <h2 className="font-serif text-4xl md:text-5xl font-bold text-blue-900">
-                Welcome Home to Faith Tabernacle
+                Welcome Home to FTI-Biao Church
               </h2>
               <div className="space-y-4 text-gray-600 leading-relaxed text-lg">
                 <p>
-                  At Faith Tabernacle Inc. Biao, we believe that church is more than a building. It is a family. For years, we have been a place where people from every walk of life come together to encounter God, grow in faith, and serve one another with love.
+                  At Faith Tabernacle Inc. Biao, we believe that church is more than a building. It is a family. For years, we have been a place in Davao City where people from every walk of life come together to encounter God, grow in faith, and serve one another with love.
                 </p>
                 <p>
                   Whether you have been walking with Christ for decades or you are just beginning to explore what faith means, there is a seat for you here. Come as you are. Leave transformed.
@@ -186,7 +186,7 @@ export const HomePage = () => {
               <MapPin className="text-yellow-500 shrink-0 mt-1" size={24} />
               <div>
                 <h4 className="font-serif text-2xl font-bold mb-2">Our Location</h4>
-                <p className="text-blue-100 opacity-80">Biao, Community Center, City, State</p>
+                <p className="text-blue-100 opacity-80">Biao, Davao City, Philippines</p>
                 <Link to="/contact" className="inline-block mt-4 text-yellow-500 font-bold hover:underline">Get Directions</Link>
               </div>
             </div>
@@ -216,7 +216,7 @@ export const HomePage = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {MOCK_EVENTS.map((event) => (
+            {MOCK_EVENTS.filter(e => e.status === 'upcoming').slice(0, 3).map((event) => (
               <motion.div key={event.id} className="group bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all">
                 <div className="aspect-video overflow-hidden">
                   <img src={event.featured_image} alt={event.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" referrerPolicy="no-referrer" />
@@ -247,7 +247,7 @@ export const HomePage = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            {MOCK_SERMONS.map((sermon) => (
+            {MOCK_SERMONS.slice(0, 3).map((sermon) => (
               <Link key={sermon.id} to={`/sermons/${sermon.id}`} className="group cursor-pointer">
                 <div className="relative aspect-video rounded-2xl overflow-hidden mb-6">
                   <img src={sermon.thumbnail} alt={sermon.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" referrerPolicy="no-referrer" />
@@ -287,7 +287,7 @@ export const HomePage = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {MOCK_MINISTRIES.map((ministry) => (
+            {MOCK_MINISTRIES.slice(0, 3).map((ministry) => (
               <div key={ministry.id} className="p-8 rounded-2xl border border-gray-100 hover:border-yellow-500 transition-colors group">
                 <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-900 mb-6 group-hover:bg-yellow-500 group-hover:text-blue-950 transition-colors">
                   <Users size={24} />
@@ -389,7 +389,7 @@ export const HomePage = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {MOCK_POSTS.map((post) => (
+            {MOCK_POSTS.slice(0, 2).map((post) => (
               <Link key={post.id} to={`/blog/${post.slug}`} className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col md:flex-row">
                 <div className="md:w-2/5 aspect-video md:aspect-auto overflow-hidden">
                   <img src={post.featured_image} alt={post.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" referrerPolicy="no-referrer" />

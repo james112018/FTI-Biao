@@ -20,9 +20,9 @@ export const AboutPage = () => {
             animate={{ opacity: 1, y: 0 }}
             className="font-serif text-5xl font-bold mb-6"
           >
-            About Faith Tabernacle
+            About FTI-Biao Church
           </motion.h1>
-          <p className="text-xl text-blue-100 max-w-2xl mx-auto">Discover our story, our mission, and the hearts behind our community.</p>
+          <p className="text-xl text-blue-100 max-w-2xl mx-auto">Discover our story, our mission, and the hearts behind our community in Biao, Davao City.</p>
         </div>
       </section>
 

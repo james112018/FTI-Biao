@@ -18,9 +18,9 @@ export const SermonsPage = () => {
             animate={{ opacity: 1, y: 0 }}
             className="font-serif text-5xl font-bold mb-6"
           >
-            Sermons & Messages
+            Sermons from FTI-Biao
           </motion.h1>
-          <p className="text-xl text-blue-100 max-w-2xl mx-auto mb-12">Deepen your understanding of God's Word with our latest teachings and series.</p>
+          <p className="text-xl text-blue-100 max-w-2xl mx-auto mb-12">Deepen your understanding of God's Word with our latest teachings from Biao, Davao City.</p>
           
           {/* Search Bar */}
           <div className="max-w-2xl mx-auto relative">

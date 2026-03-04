@@ -67,9 +67,9 @@ export const ContactPage = () => {
             animate={{ opacity: 1, y: 0 }}
             className="font-serif text-5xl font-bold mb-6"
           >
-            Contact Us
+            Contact FTI-Biao Church
           </motion.h1>
-          <p className="text-xl text-blue-100 max-w-2xl mx-auto">We're here to listen, pray with you, and help you find your way at Faith Tabernacle.</p>
+          <p className="text-xl text-blue-100 max-w-2xl mx-auto">We're here to listen, pray with you, and help you find your way at our Biao, Davao City community.</p>
         </div>
       </section>
 
@@ -109,7 +109,7 @@ export const ContactPage = () => {
                     </div>
                     <div>
                       <h4 className="font-bold text-blue-900">Address</h4>
-                      <p className="text-gray-600">Biao, Community Center, City, State</p>
+                      <p className="text-gray-600">Biao, Davao City, Philippines</p>
                     </div>
                   </div>
                   <div className="space-y-4">
@@ -198,6 +198,24 @@ export const ContactPage = () => {
                 </form>
               )}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Map Section */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white h-[500px] relative">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.6230876825243!2d125.5201759757247!3d7.169494892835307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x32f91539cba2f09b%3A0x557d87e72e03edb9!2sFTI-Biao%20Church!5e0!3m2!1sen!2sph!4v1772590496046!5m2!1sen!2sph" 
+              width="100%" 
+              height="100%" 
+              style={{ border: 0 }} 
+              allowFullScreen={true} 
+              loading="lazy" 
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Church Location"
+            ></iframe>
           </div>
         </div>
       </section>

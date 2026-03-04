@@ -39,9 +39,9 @@ export const MinistriesPage = () => {
             animate={{ opacity: 1, y: 0 }}
             className="font-serif text-5xl font-bold mb-6"
           >
-            Our Ministries
+            Ministries at FTI-Biao
           </motion.h1>
-          <p className="text-xl text-blue-100 max-w-2xl mx-auto">There is a place for everyone to grow, serve, and belong. Find your community today.</p>
+          <p className="text-xl text-blue-100 max-w-2xl mx-auto">There is a place for everyone to grow, serve, and belong in our Biao, Davao City community. Find your place today.</p>
         </div>
       </section>
 

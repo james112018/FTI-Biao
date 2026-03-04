@@ -90,119 +90,56 @@ export const GivingPage = () => {
               </div>
             </div>
 
-            {/* Right: Giving Form */}
+            {/* Right: Payment Options */}
             <div className="bg-white rounded-[2.5rem] shadow-2xl border border-gray-100 p-8 md:p-12">
               <div className="mb-10">
-                <h3 className="font-serif text-2xl font-bold text-blue-900 mb-2">Online Giving</h3>
-                <p className="text-gray-500 text-sm">Select an amount and fund category below.</p>
+                <h3 className="font-serif text-2xl font-bold text-blue-900 mb-2">Giving Options</h3>
+                <p className="text-gray-500 text-sm">You can give through any of the following platforms.</p>
               </div>
 
-              {formStatus === 'success' ? (
-                <motion.div 
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="text-center py-12"
-                >
-                  <CheckCircle2 className="mx-auto text-green-500 mb-6" size={64} />
-                  <h3 className="text-2xl font-bold text-blue-900 mb-2">Thank You!</h3>
-                  <p className="text-gray-600">Your giving notification has been sent. We appreciate your generosity!</p>
-                  <button 
-                    onClick={() => setFormStatus('idle')}
-                    className="mt-8 text-blue-900 font-bold hover:underline"
-                  >
-                    Give again
-                  </button>
-                </motion.div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-8">
-                  {/* Amount Selection */}
-                  <div className="grid grid-cols-3 gap-4">
-                    {['25', '50', '100', '250', '500', 'Other'].map((amt) => (
-                      <button 
-                        type="button"
-                        key={amt}
-                        onClick={() => amt !== 'Other' && setAmount(amt)}
-                        className={cn(
-                          "py-4 rounded-2xl font-bold text-lg transition-all border-2",
-                          amount === amt 
-                            ? "bg-blue-900 border-blue-900 text-white shadow-lg" 
-                            : "bg-white border-gray-100 text-gray-600 hover:border-blue-900"
-                        )}
-                      >
-                        {amt === 'Other' ? amt : `$${amt}`}
-                      </button>
-                    ))}
+              <div className="space-y-6">
+                {/* GCash */}
+                <div className="p-6 rounded-2xl bg-blue-50 border border-blue-100 flex items-center gap-6">
+                  <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center text-white shrink-0">
+                    <Smartphone size={32} />
                   </div>
-
-                  {/* Custom Amount Input */}
-                  {amount === 'Other' && (
-                    <div className="relative">
-                      <span className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-400 font-bold">$</span>
-                      <input 
-                        name="custom_amount"
-                        type="number" 
-                        className="w-full pl-12 pr-6 py-5 bg-gray-50 border border-gray-100 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-900 font-bold text-xl"
-                        placeholder="Enter amount"
-                        autoFocus
-                        required
-                      />
-                    </div>
-                  )}
-
-                  {/* Fund Category */}
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold text-gray-700">Select Fund</label>
-                    <select name="fund" className="w-full px-6 py-5 bg-gray-50 border border-gray-100 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-900 font-medium text-gray-700">
-                      <option>Tithes & Offerings</option>
-                      <option>Missions Fund</option>
-                      <option>Building Fund</option>
-                      <option>Benevolence</option>
-                      <option>Special Project</option>
-                    </select>
+                  <div>
+                    <h4 className="font-bold text-blue-900 text-lg">GCash</h4>
+                    <p className="text-blue-700 font-mono text-xl font-bold">0912 345 6789</p>
+                    <p className="text-xs text-gray-500 mt-1">Account Name: Faith Tabernacle Inc.</p>
                   </div>
+                </div>
 
-                  {/* Frequency */}
-                  <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-2xl">
-                    <button 
-                      type="button"
-                      onClick={() => setIsRecurring(false)}
-                      className={cn(
-                        "flex-1 py-3 rounded-xl text-sm font-bold transition-all",
-                        !isRecurring ? "bg-white text-blue-900 shadow-sm" : "text-gray-500"
-                      )}
-                    >
-                      One-time
-                    </button>
-                    <button 
-                      type="button"
-                      onClick={() => setIsRecurring(true)}
-                      className={cn(
-                        "flex-1 py-3 rounded-xl text-sm font-bold transition-all",
-                        isRecurring ? "bg-white text-blue-900 shadow-sm" : "text-gray-500"
-                      )}
-                    >
-                      Monthly
-                    </button>
+                {/* Bank Transfer */}
+                <div className="p-6 rounded-2xl bg-gray-50 border border-gray-100 flex items-center gap-6">
+                  <div className="w-16 h-16 bg-yellow-500 rounded-2xl flex items-center justify-center text-blue-950 shrink-0">
+                    <Landmark size={32} />
                   </div>
-
-                  {formStatus === 'error' && (
-                    <p className="text-red-500 text-sm font-bold">Something went wrong. Please try again.</p>
-                  )}
-
-                  <button 
-                    disabled={formStatus === 'submitting'}
-                    className="w-full py-6 bg-yellow-500 text-blue-950 font-bold rounded-2xl hover:bg-yellow-400 transition-all shadow-xl text-xl disabled:opacity-50"
-                  >
-                    {formStatus === 'submitting' ? 'Processing...' : `Give $${amount === 'Other' ? '...' : amount} Now`}
-                  </button>
-
-                  <div className="flex justify-center items-center gap-6 pt-4">
-                    <CreditCard size={24} className="text-gray-300" />
-                    <Landmark size={24} className="text-gray-300" />
-                    <Smartphone size={24} className="text-gray-300" />
+                  <div>
+                    <h4 className="font-bold text-blue-900 text-lg">Bank Transfer (BDO)</h4>
+                    <p className="text-blue-900 font-mono text-xl font-bold">001234567890</p>
+                    <p className="text-xs text-gray-500 mt-1">Account Name: Faith Tabernacle Inc.</p>
                   </div>
-                </form>
-              )}
+                </div>
+
+                {/* PayMaya */}
+                <div className="p-6 rounded-2xl bg-green-50 border border-green-100 flex items-center gap-6">
+                  <div className="w-16 h-16 bg-green-600 rounded-2xl flex items-center justify-center text-white shrink-0">
+                    <Smartphone size={32} />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-blue-900 text-lg">Maya</h4>
+                    <p className="text-green-700 font-mono text-xl font-bold">0912 345 6789</p>
+                    <p className="text-xs text-gray-500 mt-1">Account Name: Faith Tabernacle Inc.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-10 pt-8 border-t border-gray-100 text-center">
+                <p className="text-sm text-gray-500 italic">
+                  "Give, and it will be given to you. A good measure, pressed down, shaken together and running over, will be poured into your lap." — Luke 6:38
+                </p>
+              </div>
             </div>
           </div>
         </div>

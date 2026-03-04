@@ -28,8 +28,6 @@ export const Header = () => {
     { name: 'Contact', path: '/contact' },
   ];
 
-  const userToken = localStorage.getItem('user_token');
-
   return (
     <header
       className={cn(
@@ -79,15 +77,6 @@ export const Header = () => {
               </Link>
             ))}
             <Link
-              to={userToken ? "/dashboard" : "/login"}
-              className={cn(
-                "text-sm font-medium transition-colors hover:text-yellow-500",
-                isScrolled ? "text-gray-700" : "text-white"
-              )}
-            >
-              {userToken ? "Dashboard" : "Login"}
-            </Link>
-            <Link
               to="/plan-your-visit"
               className={cn(
                 "px-5 py-2 rounded-full text-sm font-bold transition-all transform hover:scale-105",
@@ -134,13 +123,6 @@ export const Header = () => {
                   {link.name}
                 </Link>
               ))}
-              <Link
-                to={userToken ? "/dashboard" : "/login"}
-                onClick={() => setIsOpen(false)}
-                className="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-blue-900 rounded-md"
-              >
-                {userToken ? "Dashboard" : "Login"}
-              </Link>
               <Link
                 to="/plan-your-visit"
                 onClick={() => setIsOpen(false)}
@@ -209,7 +191,7 @@ export const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start space-x-3">
                 <MapPin size={18} className="text-yellow-500 shrink-0 mt-1" />
-                <span className="text-sm text-blue-100/70">Biao, Community Center, City, State</span>
+                <span className="text-sm text-blue-100/70">Biao, Davao City, Philippines</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone size={18} className="text-yellow-500 shrink-0" />

@@ -14,13 +14,6 @@ db.exec(`
     value TEXT
   );
 
-  CREATE TABLE IF NOT EXISTS users (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    email TEXT UNIQUE,
-    password TEXT,
-    role TEXT DEFAULT 'editor'
-  );
-
   CREATE TABLE IF NOT EXISTS posts (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title TEXT,
@@ -190,38 +183,6 @@ async function startServer() {
     const { donor_name, email, amount, category } = req.body;
     const stmt = db.prepare("INSERT INTO donations (donor_name, email, amount, category) VALUES (?, ?, ?, ?)");
     stmt.run(donor_name, email, amount, category);
-    res.json({ success: true });
-  });
-
-  // Admin Auth (Mock for now)
-  app.post("/api/admin/login", (req, res) => {
-    const { email, password } = req.body;
-    if (email === "admin@faithtabernacle.org" && password === "admin123") {
-      res.json({ success: true, token: "mock-token", user: { email, role: "admin" } });
-    } else {
-      res.status(401).json({ success: false, message: "Invalid credentials" });
-    }
-  });
-
-  // CMS Update Routes
-  app.post("/api/admin/settings", (req, res) => {
-    const settings = req.body;
-    const stmt = db.prepare("INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)");
-    for (const [key, value] of Object.entries(settings)) {
-      stmt.run(key, value);
-    }
-    res.json({ success: true });
-  });
-
-  app.post("/api/admin/posts", (req, res) => {
-    const { title, slug, content, excerpt, featured_image, author, category, status } = req.body;
-    const stmt = db.prepare("INSERT INTO posts (title, slug, content, excerpt, featured_image, author, category, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-    stmt.run(title, slug, content, excerpt, featured_image, author, category, status);
-    res.json({ success: true });
-  });
-
-  app.delete("/api/admin/posts/:id", (req, res) => {
-    db.prepare("DELETE FROM posts WHERE id = ?").run(req.params.id);
     res.json({ success: true });
   });
 
